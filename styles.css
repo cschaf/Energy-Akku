@@ -74,8 +74,20 @@ header h1 { font-size: 1.4rem; color: var(--primary); }
 #energy-display {
   background: var(--card); border: 1px solid var(--border); border-radius: 12px;
   padding: 1rem; text-align: center; box-shadow: 0 2px 4px var(--shadow);
+  /* verhindert Überlauf */
+  overflow: hidden;  
 }
-.spoons { display: flex; justify-content: center; gap: 0.25rem; margin-top: 0.5rem; font-size: 1.5rem; }
+
+/* Löffelzeile */
+.spoons {
+  display: flex;
+  flex-wrap: wrap;           /* Zeilenumbruch erlauben */
+  justify-content: center;
+  gap: 0.25rem;
+  font-size: clamp(1rem, 5vw, 1.5rem); /* schrumpft auf kleinen Screens */
+  padding: 0 .25rem;
+}
+
 .spoon { transition: transform .2s; }
 .spoon.used { opacity: .25; transform: scale(.9); }
 
