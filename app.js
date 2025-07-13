@@ -130,6 +130,17 @@ resetBtn.addEventListener('click', () => {
   tasksUL.querySelectorAll('input[type=checkbox]').forEach(cb => cb.checked = false);
 });
 
+/* --- Aufgabe hinzufügen --- */
+taskForm.addEventListener('submit', e => {
+  e.preventDefault();
+  const text = taskInput.value.trim();
+  const cost = parseInt(costSelect.value, 10);
+  if (!text || isNaN(cost)) return;
+  addTask(text, cost);
+  taskInput.value = '';
+  costSelect.value = '';
+});
+
 /* --- Init --- */
 loadState();
 updateEnergyDisplay();
