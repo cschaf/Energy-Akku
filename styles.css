@@ -1,0 +1,116 @@
+:root {
+  /* Light Mode */
+  --bg:            #f7f9fb;
+  --card:          #ffffff;
+  --primary:       #3f72af;
+  --primary-light: #dbe2ef;
+  --text:          #112d4e;
+  --text-muted:    #7d8a9b;
+  --accent:        #ff6b6b;
+  --border:        #e5e9f2;
+  --header:        #dbe2ef;
+  --shadow:        rgba(0,0,0,.06);
+}
+html.dark {
+  --bg:            #121a24;
+  --card:          #1e2632;
+  --primary:       #5e90d6;
+  --primary-light: #25364f;
+  --text:          #e2e8f0;
+  --text-muted:    #94a3b8;
+  --accent:        #ff7a7a;
+  --border:        #2c3340;
+  --header:        #25364f;
+  --shadow:        rgba(0,0,0,.4);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.55;
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem .75rem;
+  transition: background .3s, color .3s;
+}
+#app {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+header { display: flex; justify-content: space-between; align-items: center; }
+header h1 { font-size: 1.4rem; color: var(--primary); }
+#theme-toggle {
+  background: none; border: none; font-size: 1.4rem; cursor: pointer; transition: transform .2s;
+}
+#theme-toggle:hover { transform: scale(1.15); }
+
+/* Accordion */
+.accordion {
+  background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+  overflow: hidden; box-shadow: 0 2px 4px var(--shadow);
+}
+.accordion-header {
+  width: 100%; background: var(--header); color: var(--primary); border: none;
+  padding: .75rem 1rem; text-align: left; font-size: 1rem; cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.accordion-header::after { content: '+'; font-size: 1.2rem; transition: transform .2s; }
+.accordion-header.open::after { transform: rotate(45deg); }
+.accordion-body {
+  max-height: 0; overflow: hidden; transition: max-height .3s ease, padding .3s;
+  padding: 0 1rem;
+}
+.accordion-body.open { max-height: 1500px; padding: 1rem; }
+.accordion-body h3 { margin: .5rem 0 .25rem; font-size: 1.1rem; color: var(--primary); }
+.accordion-body p { margin-bottom: .75rem; font-size: .95rem; color: var(--text-muted); }
+
+/* Energy display */
+#energy-display {
+  background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+  padding: 1rem; text-align: center; box-shadow: 0 2px 4px var(--shadow);
+}
+.spoons { display: flex; justify-content: center; gap: 0.25rem; margin-top: 0.5rem; font-size: 1.5rem; }
+.spoon { transition: transform .2s; }
+.spoon.used { opacity: .25; transform: scale(.9); }
+
+/* Form */
+#task-form { display: flex; flex-direction: column; gap: .75rem; }
+input, select, button { font-size: 1rem; padding: .55rem .75rem; border: 1px solid var(--border); border-radius: 8px; background: var(--card); color: var(--text); }
+button[type=submit] { background: var(--primary); color: #fff; cursor: pointer; transition: background .2s; }
+button[type=submit]:hover { background: var(--text); }
+
+/* Lists */
+#tasks { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
+.task {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: .75rem 1rem; display: flex; align-items: center; gap: .75rem;
+  box-shadow: 0 1px 3px var(--shadow);
+}
+.task.done { opacity: .55; }
+.task.done .task-text { text-decoration: line-through; }
+.task input[type=checkbox] { width: 18px; height: 18px; cursor: pointer; }
+.task-text { flex: 1; }
+.task-cost { color: var(--accent); font-weight: 600; }
+.task button { background: none; color: var(--text-muted); font-size: 1.2rem; border: none; cursor: pointer; transition: color .2s; }
+.task button:hover { color: var(--accent); }
+
+#recharge { display: flex; flex-direction: column; gap: .5rem; }
+#recharge button {
+  background: var(--primary-light); color: var(--primary); border: 1px solid var(--border);
+  cursor: pointer; transition: background .2s, color .2s;
+}
+#recharge button:hover { background: var(--primary); color: #fff; }
+
+.reset-btn {
+  width: 100%; font-size: 1rem; padding: .75rem; border: none; border-radius: 8px;
+  background: var(--accent); color: #fff; cursor: pointer; transition: background .2s;
+}
+.reset-btn:hover { background: #e55656; }
+
+@media (max-width: 360px) { .spoons { font-size: 1.2rem; } }
