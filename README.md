@@ -1,4 +1,4 @@
-# README – Mein Energie-Akku 🔋
+# Mein Energie-Akku 🔋
 
 **Kurzbeschreibung**  
 „Mein Energie-Akku“ ist eine barrierearme Single-Page-Web-App, die auf der **Löffel-Methode** (Spoon Theory) basiert. Sie hilft Menschen – besonders mit ADHS oder Autismus – den Tag mit einer begrenzten Energieanzahl (12 Löffel) zu planen, ohne sich zu überlasten.
